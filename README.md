@@ -9,14 +9,12 @@ WalletFriend is a web app that will allow users to set budgets for (optional) ca
 
 ## Data Model
 
-(___TODO__: a description of your application's data and their relationships to each other_) 
 
 The application will store Users, Purchases, and Categories.
 * Users can have multiple categories and multiple purchases
 * each category can have multiple purchases but one associated user
 * each purchase can have one category
 
-(___TODO__: sample documents_)
 
 An Example User:
 
@@ -87,12 +85,12 @@ I'm planning on researching and using the following for my project:
 * (2 points) Use a CSS framework
 * (2 points) Use a CSS preprocessor
 
-9 points total out of 8 required points
-** I'm also considering the External API option as a research topic, maybe to replace the second or third option listed above (specifically, I'm looking into currencylayer for exchange rates) **
+9 points total out of 8 required points **<br> 
+** I'm also considering the External API option as a research topic, maybe to replace the second or third option listed above (specifically, I'm looking into currencylayer for exchange rates)
 
 ## [Link to Initial Main Project File](app.js) 
 
 ## Annotations / References Used
 
-* None used yet *
+* None used yet
 
