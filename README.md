@@ -1,5 +1,3 @@
-(___TODO__: your project name_)
-
 # WalletFriend
 
 ## Overview
@@ -14,9 +12,9 @@ WalletFriend is a web app that will allow users to set budgets for (optional) ca
 (___TODO__: a description of your application's data and their relationships to each other_) 
 
 The application will store Users, Purchases, and Categories.
-* Users can have multiple categories (via refs?? or by embedding?), and multiple purchases(via refs?? or embedding?)
-* each category can have...?
-* each purchase can have multiple categories (in case one purchase fits into more than one category) via references
+* Users can have multiple categories and multiple purchases
+* each category can have multiple purchases but one associated user
+* each purchase can have one category
 
 (___TODO__: sample documents_)
 
@@ -24,10 +22,10 @@ An Example User:
 
 ```javascript
 {
-  username: "bestcriticever",
+  username: "iShouldStopBuyingThings",
   hash: // a password hash,
   categs: // an array of references to category documents
-  purchases: //array of purchase documents
+  purchases: //array of references to purchase documents
 }
 ```
 
@@ -36,9 +34,9 @@ An example Purchase:
 {
   user: // a reference to a User object
   cost: 20.0 //signifies 20.00 USD
-  items: "Shirt from H&M",
-  categs: // array of references to category documents
-  date: //date of purchase
+  items: "Completely unnecessary shirt from H&M",
+  categ: //embedded category document
+  date: //date of purchase (optional)
 }
 ```
 
@@ -69,22 +67,17 @@ An example Category:
 ![update](documentation/update.png)
 
 
-## Site map
+## [Site map](documentation/sitemap.png)
 
-(___TODO__: draw out a site map that shows how pages are related to each other_)
-
-Here's a [complex example from wikipedia](https://upload.wikimedia.org/wikipedia/commons/2/20/Sitemap_google.jpg), but you can create one without the screenshots, drop shadows, etc. ... just names of pages and where they flow to.
 
 ## User Stories or Use Cases
 
-(___TODO__: write out how your application will be used through [user stories](http://en.wikipedia.org/wiki/User_story#Format) and / or [use cases](https://www.mongodb.com/download-center?jmp=docs&_ga=1.47552679.1838903181.1489282706#previous)_)
-
 1. as non-registered user, I can register a new account with the site
 2. as a user, I can log in to the site
-3. as a user, I can create a new grocery list
-4. as a user, I can view all of the grocery lists I've created in a single list
-5. as a user, I can add items to an existing grocery list
-6. as a user, I can cross off items in an existing grocery list
+3. as a user, I can create and update budget information, both overall and for specific (but optional) categories of spending
+4. as a user, I can view all of the purchases/transactions I have added to the app (by viewing "detailed" sections)
+5. as a user, I can add purchases/transactions as spending information
+6. as a user, I can see a general overview of my spending information compared to the budget I have set on the app
 
 ## Research Topics
 
@@ -95,7 +88,7 @@ I'm planning on researching and using the following for my project:
 * (2 points) Use a CSS preprocessor
 
 9 points total out of 8 required points
-
+** I'm also considering the External API option as a research topic, maybe to replace the second or third option listed above (specifically, I'm looking into currencylayer for exchange rates) **
 
 ## [Link to Initial Main Project File](app.js) 
 

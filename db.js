@@ -15,10 +15,10 @@ const User = new mongoose.Schema({
 
 // a purchase
 const Purchase = new mongoose.Schema({
-	user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+	user: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
   	cost: {type: Number, min: 0, required: true},
  	items: {type: String, required: false},
-  	categs: { type: mongoose.Schema.Types.ObjectId, ref: 'Category' }
+  	categ: {type: mongoose.Schema.Types.ObjectId, ref: 'Category'}
 });
 
 // a category of spending
