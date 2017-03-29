@@ -1,26 +1,24 @@
-The content below is an example project proposal / requirements document. Replace the text below the lines marked "__TODO__" with details specific to your project. Remove the "TODO" lines.
-
 (___TODO__: your project name_)
 
-# Shoppy Shoperson 
+# StopBuying
 
 ## Overview
 
 (___TODO__: a brief one or two paragraph, high-level description of your project_)
 
-Remembering what to buy at the grocery store is waaaaay too difficult. Also, shopping for groceries when you're hungry leads to regrettable purchases. Sooo... that's where Shoppy Shoperson comes in!
+Finding out that your bank account balance is lower than you expected is about as fun as a root canal, but keeping track of your expenses can be annoying.
 
-Shoppy Shoperson is a web app that will allow users to keep track of multiple grocery lists. Users can register and login. Once they're logged in, they can create or view their grocery list. For every list that they have, they can add items to the list or cross off items.
+StopBuying is a web app that will allow users to set budgets for (optional) categories and keep track of their expenses. Users can register and login, at which point they can set (or alter) their spending categories and budgets (e.g. groceries, transportation, etc.) and enter actual purchases they have made. The app will provide them with an overview of their recent spending, as well as a comparison of their overall budget to their actual spending habits. Users will be able to request more detailed comparisons (e.g. per category)
 
 
 ## Data Model
 
 (___TODO__: a description of your application's data and their relationships to each other_) 
 
-The application will store Users, Lists and Items
-
-* users can have multiple lists (via references)
-* each list can have multiple items (by embedding)
+The application will store Users, Purchases, and Categories.
+* Users can have multiple categories (via refs?? or by embedding?), and multiple purchases(via refs?? or embedding?)
+* each category can have...?
+* each purchase can have multiple categories (in case one purchase fits into more than one category) via references
 
 (___TODO__: sample documents_)
 
@@ -28,46 +26,52 @@ An Example User:
 
 ```javascript
 {
-  username: "shannonshopper",
+  username: "bestcriticever",
   hash: // a password hash,
-  lists: // an array of references to List documents
+  categs: // an array of references to category documents
+  purchases: //array of purchase documents
 }
 ```
 
-An Example List with Embedded Items:
-
+An example Purchase:
 ```javascript
 {
   user: // a reference to a User object
-  name: "Breakfast foods",
-  items: [
-    { name: "pancakes", quantity: "9876", checked: false},
-    { name: "ramen", quantity: "2", checked: true},
-  ],
-  createdAt: // timestamp
+  cost: 20.0 //signifies 20.00 USD
+  items: "Shirt from H&M",
+  categs: // array of references to category documents
+  date: //date of purchase
+}
+```
+
+An example Category:
+```javascript
+{
+  user: // a reference to a User object
+  budget: 200.0 //signifies 200.00 USD,
+  name: "Groceries"
 }
 ```
 
 
 ## [Link to Commented First Draft Schema](db.js) 
 
-(___TODO__: create a first draft of your Schemas in db.js and link to it_)
-
 ## Wireframes
 
 (___TODO__: wireframes for all of the pages on your site; they can be as simple as photos of drawings or you can use a tool like Balsamiq, Omnigraffle, etc._)
 
-/list/create - page for creating a new shopping list
+/ - Homepage: users can see overviews of their spending
 
-![list create](documentation/list-create.png)
+![home](documentation/home.png)
 
-/list - page for showing all shopping lists
+/addPurchase - : users can add purchase information
 
-![list](documentation/list.png)
+![add purchase](documentation/spend.png)
 
-/list/slug - page for showing specific shopping list
+/update - Homepage: users can update budget information
 
-![list](documentation/list-slug.png)
+![update](documentation/update.png)
+
 
 ## Site map
 
