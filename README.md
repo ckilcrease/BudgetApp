@@ -4,7 +4,7 @@
 
 Finding out that your bank account balance is lower than you expected is about as fun as a root canal, but keeping track of your expenses can be annoying.
 
-WalletFriend is a web app that will allow users to set budgets for (optional) categories and keep track of their expenses. Users can register and login, at which point they can set (or alter) their spending categories and budgets (e.g. groceries, transportation, etc.) and enter actual purchases they have made. The app will provide them with an overview of their recent spending, as well as a comparison of their overall budget to their actual spending habits. Users will be able to request more detailed comparisons (e.g. per category)
+WalletFriend is a web app that will allow users to set budgets for (optional) categories and keep track of their expenses. Users can register and login, at which point they can set (or alter) their spending categories and budgets (e.g. groceries, transportation, etc.) and enter actual purchases they have made. The app will provide them with an overview of their recent spending, as well as a comparison of their overall budget to their actual spending habits. Users will be able to request more detailed comparisons (e.g. per category).
 
 
 ## Data Model
@@ -12,8 +12,8 @@ WalletFriend is a web app that will allow users to set budgets for (optional) ca
 
 The application will store Users, Purchases, and Categories.
 * Users can have multiple categories and multiple purchases
-* each category can have multiple purchases but one associated user
-* each purchase can have one category
+* Each category can have multiple purchases but one associated user
+* Each purchase can have one category
 
 
 An Example User:
@@ -30,7 +30,7 @@ An Example User:
 An example Purchase:
 ```javascript
 {
-  user: // a reference to a User object
+  user: // a reference to a User document
   cost: 20.0 //signifies 20.00 USD
   items: "Completely unnecessary shirt from H&M",
   categ: //embedded category document
@@ -41,7 +41,7 @@ An example Purchase:
 An example Category:
 ```javascript
 {
-  user: // a reference to a User object
+  user: // a reference to a User document
   budget: 200.0 //signifies 200.00 USD,
   name: "Groceries"
 }
