@@ -89,12 +89,14 @@ app.post('/addPurchase', (req, res) => {
 			items: req.body.descrip,
 			date: req.body.date
 		});
+		//save np
 		np.save((err) => {
 			if (err){
 				res.send(err);
 				console.log(err);
 			}
-			else{
+			else{ //if no error, push np to user's purchases
+				//and remove its cost from user's remaining budget
 				User.findOneAndUpdate({username: req.user.username},
 					{$push: {purchases: np}, $inc: {remTotBudget: (-1)*np.cost}},
 					(err, user, count) => {

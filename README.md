@@ -89,5 +89,5 @@ I'm planning on researching and using the following for my project:
 * Based generally on 3 and (mostly/specifically) 4: [addPur.hbs line 3](views/addPur.hbs), [details.hbs line 2](views/details.hbs), [layout.hbs line 7, 11-25](views/layout.hbs)
 
 5. [Decimals/currency in forms](https://jsfiddle.net/trixta/UC6tG/) 
-* Based on 5: [register.hbs line 8](views/register.hbs) [addPur.hbs line 8](views/addPur.hbs)
+* Based on 5: [register.hbs line 8](views/register.hbs), [addPur.hbs line 8](views/addPur.hbs)
 

@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 const passportLocalMongoose = require('passport-local-mongoose');
+const fs = require('fs');
 
 // users
 // the site requires authentication (username/password)
@@ -27,4 +28,7 @@ const Purchase = new mongoose.Schema({
 mongoose.model('User', User);
 mongoose.model('Purchase', Purchase);
 
-mongoose.connect('mongodb://localhost/finalproject');
+if (process.env.NODE_ENV === PRODUCTION){
+
+}
+
