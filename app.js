@@ -8,7 +8,8 @@ const express = require('express'),
 	passport = require('passport'),
 	path = require('path'),
 	bodyParser = require('body-parser'),
-	User = mongoose.model('User');
+	User = mongoose.model('User'),
+	Purchase = mongoose.model('Purchase');
 
 const app = express();
 
@@ -16,7 +17,7 @@ const app = express();
 // enable sessions
 const session = require('express-session');
 const sessionOptions = {
-    secret: 'secret cookie thang (store this elsewhere!)',
+    secret: 'session secret',
     resave: true,
     saveUninitialized: true
 };
@@ -26,8 +27,8 @@ app.use(session(sessionOptions));
 app.use(passport.initialize()); //to start up passport
 app.use(passport.session()); //to enable persistent login sessions
 
-//from lecture notes: middleware that drops req.user into context of 
-//every template:
+//from lecture slides on authentication/passport: 
+//middleware that drops req.user into context of every template:
 app.use(function(req, res, next){
 	res.locals.user = req.user;
 	next();
@@ -48,8 +49,68 @@ app.use(express.static(path.join(__dirname, 'public')));
 //route handling (authentication-related ones from/based on lecture 
 //notes and demo):
 app.get('/', (req, res) => {
- 	res.render('index');
+	Purchase.find({user: req.user}, (err, purs) => {
+		//if no errors, purs will contain all purchases made by
+		//user (for use in form)
+		if (err){
+			console.log(err);
+		}
+		else{
+			res.render('index', {purList: purs});
+		}
+	});
 });
+
+app.post('/', (req,res) => {
+	Purchase.findOne({user: req.user, _id: req.body.showPur}, (err, sP) => {
+		if (err){
+			console.log(err);
+		}
+		else{
+			res.render('details', {pur: sP});
+		}
+	});
+});
+
+app.get('/addPurchase', (req, res) => {
+	if (req.user){
+		res.render('addPur');
+	}
+	else{
+		res.render('mustLogin');
+	}
+});
+
+app.post('/addPurchase', (req, res) => {
+	if (req.body.newPur !== null){
+		//new purchase was added in form
+		const np = new Purchase({user: req.user,
+			cost: req.body.price,
+			items: req.body.descrip,
+			date: req.body.date
+		});
+		np.save((err) => {
+			if (err){
+				res.send(err);
+				console.log(err);
+			}
+			else{
+				User.findOneAndUpdate({username: req.user.username},
+					{$push: {purchases: np}, $inc: {remTotBudget: (-1)*np.cost}},
+					(err, user, count) => {
+						if (err){
+							res.send(err);
+							console.log(err);
+						}
+						else{
+							res.render('addPur', {success: true});
+						}
+					});
+			}
+		});
+	}
+});
+
 
 app.get('/login', (req, res) => {
 	res.render('login');
@@ -79,10 +140,10 @@ app.get('/register', (req, res) => {
 
 app.post('/register', (req, res) => {
 	User.register(new User({username: req.body.username, 
-		totBudget: req.body.totBudg}),
+		totBudget: req.body.totBudg, remTotBudget: req.body.totBudg}),
 		req.body.password, (err, user) => {
 			if (err){
-				res.render('register',{error: 'Your registration information is not valid'});
+				res.render('register',{message: 'Your registration information is not valid'});
 			}
 			else{
 				//authenticate so that user is logged in
@@ -93,13 +154,10 @@ app.post('/register', (req, res) => {
 	});
 });
 
-
-
 app.get('/logout', (req, res) => {
 	req.logout();
 	res.redirect('/');
 });
-
 
 
 app.listen(3000); 

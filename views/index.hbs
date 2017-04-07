@@ -1,1 +1,18 @@
-Homepage
+<h1>Welcome to WalletFriend!</h1>
+{{#if user}}
+<h2>Overview: </h2>
+
+<div>Your overall budget is: {{user.totBudget}}</div>
+<div>Your remaining overall budget is: {{user.remTotBudget}}</div>
+
+<div>View details of a specific purchase:</div>
+<form method="POST" action="/">
+	Purchases:
+	<select name="showPur">
+		{{#each purList}}
+		<option value={{this._id}}>{{this.items}}</option>
+		{{/each}}
+	</select>
+	<input type="submit" value="Submit">
+</form>
+{{/if}}

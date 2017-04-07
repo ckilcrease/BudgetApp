@@ -1,0 +1,24 @@
+<h1>Add and/or Delete a Category</h1>
+
+{{#if success}}
+Success! Your categories have been updated as specified. Take a look in your detailed overviews on the <a href="/">homepage</a>, if you'd like.
+<!--Take a look _linkhere_, if you'd like. -->
+{{/if}}
+
+<form method="POST" action="/modify">
+	Category to add (optional): <input type="text" name="newCat">
+	Budget to allocate (default is 0): <input type="Number" name="newBudg" value="0"> <!-- remember; adjust -->
+	<!-- Category to remove (optional):<select name="remCat">
+		<option value="None">None</option>
+		{{#each user.categs}}
+		<option value={{this}}>{{this}}</option>
+		{{/each}}
+	</select>
+	If removing a category, select the amount of the category budget that you would like added back to your overall <i>remaining</i> budget:
+	<select name="addBack">
+		<option value="total">Total Category Budget</option>
+		<option value="remaining">Remaining Category Budget</option>
+		<option value="none">None</option>		
+	</select> -->
+	<input type="submit" value="Submit">
+</form>

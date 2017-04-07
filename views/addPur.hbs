@@ -1,0 +1,12 @@
+<h1>Add a Purchase</h1>
+{{#if success}}
+<div class="alert alert-success">Success! Your purchase has been added. Take a look in your detailed overviews on the <a href="/">homepage</a>, if you'd like.</div>
+{{/if}}
+
+<form method="POST" action="/addPurchase">
+	Description of items bought: <input type="text" name="descrip">
+	Amount paid: <input name="price" type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100"> 
+
+	Date of purchase: <input type="date" name="date">
+	<input type="submit" value="Submit">
+</form>

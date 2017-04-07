@@ -4,16 +4,15 @@
 
 Finding out that your bank account balance is lower than you expected is about as fun as a root canal, but keeping track of your expenses can be annoying.
 
-WalletFriend is a web app that will allow users to set budgets for (optional) categories and keep track of their expenses. Users can register and login, at which point they can set (or alter) their spending categories and budgets (e.g. groceries, transportation, etc.) and enter actual purchases they have made. The app will provide them with an overview of their recent spending, as well as a comparison of their overall budget to their actual spending habits. Users will be able to request more detailed comparisons (e.g. per category).
+WalletFriend is a web app that will allow users to set a budget and keep track of their expenses. Users can register and login, at which point they can set (or alter) their budget on the homepage (or during registration itself). They may also add purchases they have made through the homepage. The app will provide them with an overview of their recent spending, as well as a comparison of their overall budget to their actual spending habits. Users will be able to request detailed information about their purchases/spending.
 
 
 ## Data Model
 
 
-The application will store Users, Purchases, and Categories.
-* Users can have multiple categories and multiple purchases
-* Each category can have multiple purchases but one associated user
-* Each purchase can have one category
+The application will store Users and Purchases.
+* Users can multiple purchases
+* Each purchase can have one associated user
 
 
 An Example User:
@@ -22,7 +21,6 @@ An Example User:
 {
   username: "iShouldStopBuyingThings",
   hash: // a password hash,
-  categs: // an array of references to category documents
   purchases: //array of references to purchase documents
 }
 ```
@@ -33,17 +31,7 @@ An example Purchase:
   user: // a reference to a User document
   cost: 20.0 //signifies 20.00 USD
   items: "Completely unnecessary shirt from H&M",
-  categ: //embedded category document
   date: //date of purchase (optional)
-}
-```
-
-An example Category:
-```javascript
-{
-  user: // a reference to a User document
-  budget: 200.0 //signifies 200.00 USD,
-  name: "Groceries"
 }
 ```
 
@@ -72,7 +60,7 @@ An example Category:
 
 1. as non-registered user, I can register a new account with the site
 2. as a user, I can log in to the site
-3. as a user, I can create and update budget information, both overall and for specific (but optional) categories of spending
+3. as a user, I can create and update budget information
 4. as a user, I can view all of the purchases/transactions I have added to the app (by viewing "detailed" sections)
 5. as a user, I can add purchases/transactions as spending information
 6. as a user, I can see a general overview of my spending information compared to the budget I have set on the app
@@ -92,5 +80,14 @@ I'm planning on researching and using the following for my project:
 
 ## Annotations / References Used
 
-* None used yet
+1. [Passport.js authentication docs](http://passportjs.org/docs/)
+2. Lecture slides on Passport
+* Based generally on 1 and mostly/specifically 2: [db.js lines 4 and 17](db.js), [auth.js](auth.js), [app.js lines 3-12, 26-35, 115-161](app.js)
+
+3. [Bootstrap docs](http://getbootstrap.com/getting-started/#download)
+4. [w3schools Bootstrap guide](https://www.w3schools.com/bootstrap/default.asp)
+* Based generally on 3 and (mostly/specifically) 4: [addPur.hbs line 3](views/addPur.hbs), [details.hbs line 2](views/details.hbs), [layout.hbs line 7, 11-25](views/layout.hbs)
+
+5. [Decimals/currency in forms](https://jsfiddle.net/trixta/UC6tG/) 
+* Based on 5: [register.hbs line 8](views/register.hbs) [addPur.hbs line 8](views/addPur.hbs)
 

@@ -1,0 +1,19 @@
+{{#if pur}}
+<table class="table table-condensed">
+	<thead>
+		<tr>
+		<th>Purchase</th>
+		<th>Amount Paid</th>
+		<th>Date of Purchase</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{pur.items}}</td>
+			<td>${{pur.cost}}</td>
+			<td>{{pur.date}}</td>
+		</tr>
+	</tbody>
+</table>
+
+{{/if}}
