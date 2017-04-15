@@ -1,11 +1,14 @@
+<script src="javascripts/main.js"></script>
+
 <h1>Remove a Purchase</h1>
 {{#if success}}
 <div class="alert alert-success"><strong>Success!</strong><br> Your purchase has been removed as specified. Take a look in your detailed overviews on the <a href="/">homepage</a>, if you'd like.</div>
 {{/if}}
 
 {{#if purList}}
-<form method="POST" action="/removePurchase">
-Select the purchases you would like to remove: 
+<form method="POST" name="remPur" action="/removePurchase" onsubmit="return validateRemoval()">
+
+<div class="cont">Select the purchases you would like to remove: </div>
 {{#each purList}}
 <input type="checkbox" name="purchases" value={{this._id}}>{{this.items}}
 <br>
