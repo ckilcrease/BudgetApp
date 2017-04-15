@@ -2,14 +2,15 @@
 
 /*client-side validation for purchase removal form:*/
 function validateRemoval(){
-	const purs = document.forms["remPur"]["purchases"].value;
+	const purs = document.forms["remPur"]["purchases"].value; //purchases in the form
 	const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+	//convert checkboxes to array:
 	const checkArray = Array.prototype.slice.call(checkboxes);
 	const atLeastOne = checkArray.some(x => x.checked);
 	if (atLeastOne){
 		return true;
 	}
-	//else:
+	//else: none checked
 	const err = elt("div", "You must select at least one purchase before submitting.");
 	err.classList.add("alert", "alert-warning");
 	//integrate error message into the DOM:
@@ -20,7 +21,7 @@ function validateRemoval(){
 }
 
 
-
+/*elt function from homework 7: */
 function elt(type){
 	const node = document.createElement(type);
 	for (let i = 1; i < arguments.length; i++){

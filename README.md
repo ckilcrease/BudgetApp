@@ -67,14 +67,14 @@ An example Purchase:
 
 ## Research Topics
 
-I'm planning on researching and using the following for my project:
+I'm researching/using the following for my project:
 
 * (5 points) Integrate user authentication
 * (2 points) Use a CSS framework
-* (2 points) Use a CSS preprocessor
+* (3 points) Client-side form validation using JavaScript
 
-9 points total out of 8 required points **<br> 
-** I'm also considering the External API option as a research topic, maybe to replace the second or third option listed above (specifically, I'm looking into currencylayer for exchange rates)
+10 points total out of 8 required points<br> 
+
 
 ## [Link to Initial Main Project File](app.js) 
 
@@ -91,3 +91,5 @@ I'm planning on researching and using the following for my project:
 5. [Decimals/currency in forms](https://jsfiddle.net/trixta/UC6tG/) 
 * Based on 5: [register.hbs line 8](views/register.hbs), [addPur.hbs line 8](views/addPur.hbs)
 
+6. [Using onsubmit for form validation](https://www.w3schools.com/jsref/event_onsubmit.asp)
+* Based on 6: [remP.hbs line 9](views/remP.hbs)
