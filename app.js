@@ -82,7 +82,7 @@ app.get('/addPurchase', (req, res) => {
 });
 
 app.post('/addPurchase', (req, res) => {
-	if (req.body.newPur !== null){
+	if (req.body !== null){
 		//new purchase was added in form
 		const np = new Purchase({user: req.user,
 			cost: req.body.price,
@@ -97,6 +97,7 @@ app.post('/addPurchase', (req, res) => {
 			}
 			else{ //if no error, push np to user's purchases
 				//and remove its cost from user's remaining budget
+
 				User.findOneAndUpdate({username: req.user.username},
 					{$push: {purchases: np}, $inc: {remTotBudget: (-1)*np.cost}},
 					(err, user, count) => {
@@ -113,6 +114,77 @@ app.post('/addPurchase', (req, res) => {
 	}
 });
 
+app.get('/removePurchase', (req, res) => {
+	if (req.user){
+		Purchase.find({user: req.user}, (err, purs) => {
+		//if no errors, purs will contain all purchases made by
+		//user (for use in form)
+			if (err){
+				console.log(err);
+			}
+			else{
+				res.render('remP', {purList: purs});
+			}
+		});
+
+	}
+	else{
+		res.render('mustLogin');
+	}
+});
+
+app.post('/removePurchase', (req, res) => {
+	if (req.body !== null){
+		let purs = [];
+		if (Array.isArray(req.body.purchases)){
+			purs = req.body.purchases;
+		}
+		else{
+			purs.push(req.body.purchases);
+		}
+
+		//req.body.purchases = checked purchases
+		purs.forEach((purchase) => {
+
+			let cost;
+			Purchase.findOne({user: req.user, _id: purchase}, (err, pur) => {
+				if (err) {console.log(err);}
+				else{
+					cost = pur.cost;
+
+					Purchase.remove({user: req.user, _id: purchase}, (err, rP) => {
+						if (err){
+							console.log(err);
+						}
+
+						else{
+							User.findOneAndUpdate({username: req.user.username},
+								{$pull: {purchases: rP.ObjectId}, $inc: {remTotBudget: cost}},
+								(err, user, count) => {
+									if (err){ console.log(err); }
+
+								});
+
+						}
+					}); 
+
+				}
+			});
+					
+		});
+	
+		Purchase.find({user: req.user}, (err, ps) => {
+			if (err){
+				console.log(err);
+			}
+			else{
+				res.render('remP', {success: true});
+			}
+		});
+
+	}
+
+});
 
 app.get('/login', (req, res) => {
 	res.render('login');
