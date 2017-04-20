@@ -55,6 +55,26 @@ app.get('/', (req, res) => {
 		if (err){
 			console.log(err);
 		}
+		else if (req.user){
+			User.findOne({username: req.user.username}, (err, user)=>{
+				if (err){
+					console.log(err);
+				}
+				else{ //calculate percent of budget used by user:
+					const percent = Math.ceil(((user.totBudget - user.remTotBudget) / user.totBudget) * 100);
+					if (percent < 40){
+						res.render('index', {purList: purs, percent: percent, good:true});
+					}
+					else if (percent < 79){
+						res.render('index', {purList: purs, percent: percent, med:true});
+					}
+					else{
+						res.render('index', {purList: purs, percent: percent, bad:true});
+					}
+				}
+			});
+
+		}
 		else{
 			res.render('index', {purList: purs});
 		}
@@ -112,6 +132,45 @@ app.post('/addPurchase', (req, res) => {
 			}
 		});
 	}
+});
+
+app.get('/updateBudget', (req, res) => {
+	if (req.user){
+		res.render('updateBud');
+	}
+	else{
+		res.render('mustLogin');
+	}
+});
+
+
+app.post('/updateBudget', (req, res) => {
+	const amt = req.body.amt;
+	let factor = -1;
+	if (req.body.addRem == "add"){
+		factor = 1;
+	}
+	if(req.user.totBudget + (factor * amt) < 0){
+		res.render('updateBud', {warn: true});
+	}
+	else{
+		//update budget:
+		User.findOneAndUpdate({username: req.user.username},
+			{$inc: {totBudget: amt * factor, remTotBudget: amt * factor}}, {new: true},
+			(err, user, count)=>{
+				if (err){
+					res.send(err);
+					console.log(err);
+				}
+				else{
+					//render with user's new budget
+					res.render('updateBud', {success: true, budget: user.totBudget,
+						remBudget: user.remTotBudget});
+				}
+			});
+
+	}
+
 });
 
 app.get('/removePurchase', (req, res) => {

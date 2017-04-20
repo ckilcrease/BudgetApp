@@ -1,10 +1,12 @@
+<h2>Get Started</h2>
+
 {{#if message}}
 {{message}}
 {{/if}}
 <form method="POST" action="">
-		Username: <input name="username" type="text">	
-		Password: <input name="password" type="password">	
+		Username: <input name="username" type="text"><br>	
+		Password: <input name="password" type="password"><br>	
 
-		Total budget (You can adjust this later): <input name="totBudg" type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100">
+		Total budget (You can adjust this later): <input name="totBudg" type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100"><br>
 		<input type="submit" value="Submit">	
 </form>

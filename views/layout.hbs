@@ -17,10 +17,11 @@
 			<ul class="nav navbar-nav">
 			<li><a href="/addPurchase">Add a Purchase</a></li>
 			<li><a href="/removePurchase">Remove a Purchase</a></li>
+			<li><a href="/updateBudget">Update Your Budget</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				{{#if user}}
-				<p class="navbar-text">Logged in as {{user.username}}</p>
+				<p class="navbar-text" id="usr">Logged in as <i>{{user.username}}</i></p>
 				<li><a href="/logout">Logout</a></li>
       			{{else}}
       			<li><a href="register"><span class="glyphicon glyphicon-user"></span> Register</a></li>

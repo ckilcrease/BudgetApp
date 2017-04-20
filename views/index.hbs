@@ -2,10 +2,30 @@
 {{#if user}}
 <h2>Overview: </h2>
 
-<div>Your overall budget is: {{user.totBudget}}</div>
-<div>Your remaining overall budget is: {{user.remTotBudget}}</div>
+<div>Your overall budget is: <i>${{user.totBudget}}</i></div>
+<div>Your remaining overall budget is: <i>${{user.remTotBudget}}</i></div>
 
-<div>View details of a specific purchase:</div>
+{{#if percent}}
+<div class="progress">
+	{{#if good}}
+	<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow={{percent}}
+  aria-valuemin="0" aria-valuemax="100" style="width:{{percent}}%">
+		
+	</div>
+	{{else if med}}
+		<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow={{percent}}
+  aria-valuemin="0" aria-valuemax="100" style="width:{{percent}}%">
+	</div>
+	{{else if bad}}
+		<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow={{percent}}
+  aria-valuemin="0" aria-valuemax="100" style="width:{{percent}}%">
+	</div>
+	{{/if}}
+</div>
+{{/if}}
+<i>You have used  {{percent}}%  of your total budget</i>
+
+<div class="forms">View details of a specific purchase:</div>
 <form method="POST" action="/">
 	Purchases:
 	<select name="showPur">

@@ -6,8 +6,12 @@ function validateRemoval(){
 	const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 	//convert checkboxes to array:
 	const checkArray = Array.prototype.slice.call(checkboxes);
-	const atLeastOne = checkArray.some(x => x.checked);
-	if (atLeastOne){
+	const checkedVals = checkArray.filter(function(box){
+		return box.checked;
+	});
+	//const atLeastOne = checkArray.some(x => x.checked);
+	//if (atLeastOne){
+	if (checkedVals.length > 0){
 		return true;
 	}
 	//else: none checked

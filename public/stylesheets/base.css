@@ -1,3 +1,70 @@
+*{
+	text-align: center;
+	
+}
+body{
+	background-color: #f8eee7;
+}
+
+li a, .navbar-brand{
+	color:#49274A;
+}
+
+.navbar ul li a:hover, .navbar-brand:hover{
+	background-color: #49274A;
+	color:#FFFFFF;
+}
+
+a{
+	color:#49274A;
+}
+a:hover{
+	color:#94618E;
+}
+
+input{
+	margin-bottom:5px;
+}
+
+
 strong{
 	font-size: 2em;
+	/*background: #fcf8e3;*/
+    text-shadow: 0 2px 0 #FFFFFF;
 }
+
+td{
+	text-align: left;
+}
+
+i{
+	text-shadow: 2px 2px 2px #CCCCCC;
+	letter-spacing:2px;
+}
+
+h1{
+	color: #49274A;
+	letter-spacing:2px;
+	text-shadow: 3px 4px 4px #CCCCCC;
+}
+
+h2{
+	letter-spacing: 2px;
+	color: #94618E;
+}
+
+.forms{
+	margin-top:50px;
+}
+
+.progress{
+	margin: auto;
+	margin-top: 30px;
+	width: 50%;
+}
+
+#usr{
+	/*for username in navbar*/
+	color: #94618E;
+}
+

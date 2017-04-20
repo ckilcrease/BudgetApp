@@ -8,7 +8,7 @@
 {{#if purList}}
 <form method="POST" name="remPur" action="/removePurchase" onsubmit="return validateRemoval()">
 
-<div class="cont">Select the purchases you would like to remove: </div>
+<div class="cont"><i>Select the purchases you would like to remove:</i></div>
 {{#each purList}}
 <input type="checkbox" name="purchases" value={{this._id}}>{{this.items}}
 <br>

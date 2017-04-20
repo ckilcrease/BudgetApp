@@ -1,0 +1,19 @@
+<h1>Add a Purchase</h1>
+{{#if warn}}
+<div class="alert alert-warning">
+<strong>Uh-oh!</strong>
+</div>
+Your total budget cannot be less than 0
+{{/if}}
+
+{{#if success}}
+<div class="alert alert-success"><strong>Success!</strong><br> Your budget is now ${{budget}}, with ${{remBudget}} remaining. </div>
+{{/if}}
+
+<form method="POST" action="/updateBudget">
+	<input type="radio" name="addRem" value="add" checked>Add<br>
+	<input type="radio" name="addRem" value="remove">Remove<br>
+	Amount: <input name="amt" type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100"><br>
+
+	<input type="submit" value="Submit">
+</form>
