@@ -9,8 +9,6 @@ function validateRemoval(){
 	const checkedVals = checkArray.filter(function(box){
 		return box.checked;
 	});
-	//const atLeastOne = checkArray.some(x => x.checked);
-	//if (atLeastOne){
 	if (checkedVals.length > 0){
 		return true;
 	}
@@ -19,7 +17,9 @@ function validateRemoval(){
 	err.classList.add("alert", "alert-warning");
 	//integrate error message into the DOM:
 	const errCont = document.querySelector(".cont");
-	errCont.appendChild(err);
+	if (errCont.lastChild.classList[0] !== "alert"){
+		errCont.appendChild(err);		
+	}
 
 	return false;
 }

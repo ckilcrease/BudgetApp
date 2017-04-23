@@ -1,4 +1,4 @@
-<h1>Add a Purchase</h1>
+<h1>Update Your Budget</h1>
 {{#if warn}}
 <div class="alert alert-warning">
 <strong>Uh-oh!</strong>
@@ -11,8 +11,8 @@ Your total budget cannot be less than 0
 {{/if}}
 
 <form method="POST" action="/updateBudget">
-	<input type="radio" name="addRem" value="add" checked>Add<br>
-	<input type="radio" name="addRem" value="remove">Remove<br>
+	<input type="radio" name="addRem" value="add" checked> Add | 
+	<input type="radio" name="addRem" value="remove"> Remove | 
 	Amount: <input name="amt" type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100"><br>
 
 	<input type="submit" value="Submit">
