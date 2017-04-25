@@ -6,6 +6,14 @@ body{
 	background-color: #f8eee7;
 }
 
+p{
+	margin: 30px;
+}
+
+p a{
+	text-shadow: 2px 2px 2px #CCCCCC;
+}
+
 li a, .navbar-brand{
 	color:#49274A;
 }

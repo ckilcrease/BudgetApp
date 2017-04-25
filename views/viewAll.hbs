@@ -1,0 +1,46 @@
+<script src="javascripts/main.js"></script>
+
+
+<h2>All Your Purchases</h2>
+
+{{#if filtered}}
+<p><i>Viewing purchases that cost more than ${{amt}}</i></p>
+{{/if}}
+
+{{#if purs}}
+
+<table class="table table-condensed">
+	<thead>
+		<tr>
+		<th>Purchase</th>
+		<th>Amount Paid</th>
+		<th>Date of Purchase</th>
+		</tr>
+	</thead>
+
+	<tbody>
+	{{#each purs}}
+
+		<tr>
+			<td>{{this.items}}</td>
+			<td>${{this.cost}}</td>
+			<td>{{this.date}}</td>
+		</tr>
+
+		{{/each}}
+	</tbody>
+</table>
+{{/if}}
+
+<p>
+<form method="POST" action="/view">
+Only view purchases that cost more than
+	<div class="cont"><input name="cost" type="number" value="0" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100"> <br></div>
+	<input type="submit" value="Go">
+</form>
+</p>
+
+
+{{#if filtered}}
+<p><a href="/viewAll">View All Purchases</a></p>
+{{/if}}

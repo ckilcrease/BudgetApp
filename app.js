@@ -101,6 +101,37 @@ app.get('/addPurchase', (req, res) => {
 	}
 });
 
+app.get('/viewAll', (req, res) => {
+	Purchase.find({user: req.user}, function(err, ps){
+		if (err){ console.log(err); }
+		else{
+			res.render('viewAll', {purs: ps});
+		}
+	});
+});
+
+app.get('/view', (req, res) => {
+	res.redirect('viewAll');
+});
+
+app.post('/view', (req, res) => {
+	const cost = req.body.cost;
+
+	Purchase.find({user: req.user}, function(err, ps){
+		if (err){ console.log(err); }
+		else{
+			const newList = ps.filter(ele => {
+				return ele.cost >= cost;
+			});
+
+			res.render('viewAll', {purs: newList, amt: cost, filtered: true});
+
+		}
+	});
+
+	
+});
+
 app.post('/addPurchase', (req, res) => {
 	if (req.body !== null){
 		//new purchase was added in form
