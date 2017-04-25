@@ -12,6 +12,7 @@ p{
 
 p a{
 	text-shadow: 2px 2px 2px #CCCCCC;
+	font-size:1.25em;
 }
 
 li a, .navbar-brand{

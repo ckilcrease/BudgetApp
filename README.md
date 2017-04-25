@@ -4,7 +4,7 @@
 
 Finding out that your bank account balance is lower than you expected is about as fun as a root canal, but keeping track of your expenses can be annoying.
 
-WalletFriend is a web app that will allow users to set a budget and keep track of their expenses. Users can register and login, at which point they can set (or alter) their budget on the homepage (or during registration itself). They may also add purchases they have made through the homepage. The app will provide them with an overview of their recent spending, as well as a comparison of their overall budget to their actual spending habits. Users will be able to request detailed information about their purchases/spending.
+WalletFriend is a web app that will allow users to set a budget and keep track of their expenses. Users can register and login, at which point they can set (or alter) their budget on the homepage (or during registration itself). They may also add purchases they have made through the homepage. The app will provide them with an overview of their spending, as well as a comparison of their overall budget to their actual spending habits. Users will be able to request detailed information about their purchases/spending.
 
 
 ## Data Model
@@ -61,7 +61,7 @@ An example Purchase:
 1. as non-registered user, I can register a new account with the site
 2. as a user, I can log in to the site
 3. as a user, I can create and update budget information
-4. as a user, I can view all of the purchases/transactions I have added to the app (by viewing "detailed" sections)
+4. as a user, I can view all of the purchases/transactions I have added to the app (by viewing "detailed" sections for all or specific purchases)
 5. as a user, I can add and remove information about purchases/transactions I have made
 6. as a user, I can see a general overview of my spending information compared to the budget I have set on the app
 
