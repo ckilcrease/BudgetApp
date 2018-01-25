@@ -6,7 +6,6 @@ Finding out that your bank account balance is lower than you expected is about a
 
 WalletFriend is a web app that will allow users to set a budget and keep track of their expenses. Users can register and login, at which point they can set (or alter) their budget on the homepage (or during registration itself). They may also add purchases they have made through the homepage. The app will provide them with an overview of their spending, as well as a comparison of their overall budget to their actual spending habits. Users will be able to request detailed information about their purchases/spending.
 
-
 ## Data Model
 
 
@@ -65,15 +64,15 @@ An example Purchase:
 5. as a user, I can add and remove information about purchases/transactions I have made
 6. as a user, I can see a general overview of my spending information compared to the budget I have set on the app
 
-## Research Topics
+## Created using...
 
-I'm researching/using the following for my project:
+* JavaScript 
+* MongoDB + Mongoose
+* Passport.js for user authentication
+* Bootstrap, CSS, HTML, Handlebars
 
-* (5 points) Integrate user authentication
-* (2 points) Use a CSS framework
-* (3 points) Client-side form validation using JavaScript (in file main.js in public/javascripts)
 
-10 points total out of 8 required points<br> 
+<br> 
 
 
 ## [Link to Initial Main Project File](app.js) 
